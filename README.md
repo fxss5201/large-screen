@@ -34,90 +34,68 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ![Tailwind CSS IntelliSense](https://www.tailwindcss.cn/_next/static/media/intellisense.0bd2cbf8c277e6c1330e345ab3cd7684.png)
 
-### **tailwindcss**
-
-#### 前缀
-
-|前缀|含义|
-|----|----|
-|`box-`|设置`box-sizing`|
-|`float-`|设置浮动|
-|`clear-`|清楚浮动|
-|`object-`|用于控制可替换元素的内容如何调整大小及在其容器中的位置|
-|`overflow-`|如何处理超出容器的内容|
-|`z-`|用于设置`z-index`|
-|`flex`/`flex-`|flex布局|
-|`justify-`|用于设置`justify-content`/`justify-items`/`justify-self`|
-|`content-`|用于设置`align-content`|
-|`items-`|用于设置`align-items`|
-|`self-`|用于设置`align-self`|
-|`grid-`|grid布局|
-|`p-`|内边距`padding`|
-|`m-`|外边距`margin`|
-|`w-`|元素宽度`width`|
-|`min-w-`|最小宽度`min-width`|
-|`max-w-`|最小宽度`max-width`|
-|`h-`|元素高度`height`|
-|`min-h-`|最小高度`min-height`|
-|`max-h-`|最小高度`max-height`|
-|`text-`|字体大小、行高、对齐、颜色、透明度|
-|`list-`|列表项标记类型`list-style`|
-|`placeholder-`|占位文本颜色及透明度|
-
-
-#### 元素显示类型
-
-|Class|Properties|
-|----|----|
-|block|display: block;|
-|inline-block|display: inline-block;|
-|inline|display: inline;|
-|flex|display: flex;|
-|inline-flex|display: inline-flex;|
-|table|display: table;|
-|inline-table|display: inline-table;|
-|table-caption|display: table-caption;|
-|table-cell|display: table-cell;|
-|table-column|display: table-column;|
-|table-column-group|display: table-column-group;|
-|table-footer-group|display: table-footer-group;|
-|table-header-group|display: table-header-group;|
-|table-row-group|display: table-row-group;|
-|table-row|display: table-row;|
-|flow-root|display: flow-root;|
-|grid|display: grid;|
-|inline-grid|display: inline-grid;|
-|contents|display: contents;|
-|list-item|display: list-item;|
-|hidden|display: none;|
-
-#### 文本装饰
-
-|Class|Properties|
-|----|----|
-|underline|text-decoration: underline;|
-|line-through|text-decoration: line-through;|
-|no-underline|text-decoration: none;|
-
-#### 文本转换
-
-|Class|Properties|
-|----|----|
-|uppercase|text-transform: uppercase;|
-|lowercase|text-transform: lowercase;|
-|capitalize|text-transform: capitalize;|
-|normal-case|text-transform: none;|
-
-#### 文本溢出
-
-|Class|Properties|
-|----|----|
-|truncate|overflow: hidden;text-overflow: ellipsis;white-space: nowrap;|
-|overflow-ellipsis|text-overflow: ellipsis;|
-|overflow-clip|text-overflow: clip;|
-
-本项目针对 **tailwindcss** 有如下配置:
+本项目针对 **tailwindcss** 有如下扩展，不与默认主题有冲突，增加实用性:
 
 ``` js
-
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  purge: ["./public/index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"], // 生产优化，删除未使用的CSS
+  content: [],
+  theme: {
+    extend: {
+      fontSize: {
+        // 增加字体配置
+        // text-12 = font-size: 12px;
+        // text-sm = font-size: 24px;line-height: 21px;
+        12: "12px",
+        14: "14px",
+        16: "16px",
+        18: "18px",
+        20: "20px",
+        24: "24px",
+        30: "30px",
+        sm: ["14px", "21px"],
+        md: ["16px", "24px"],
+        lg: ["20px", "30px"],
+        xl: ["24px", "36px"],
+      },
+      lineHeight: {
+        // 增加行高配置
+        // leading-12 = line-height: 12px;
+        12: "12px",
+        14: "14px",
+        16: "16px",
+        18: "18px",
+        20: "20px",
+        21: "21px",
+        24: "24px",
+        27: "27px",
+        30: "30px",
+        36: "36px",
+        45: "45px",
+      },
+      borderRadius: {
+        // 增加圆角配置
+        // rounded-2 = border-radius: 2px;
+        0: "0px",
+        2: "2px",
+        4: "4px",
+        6: "6px",
+        8: "8px",
+        10: "10px",
+        12: "12px",
+        14: "14px",
+        16: "16px",
+        18: "18px",
+        20: "20px",
+        22: "22px",
+        24: "24px",
+        26: "26px",
+        28: "28px",
+        30: "30px",
+      },
+    },
+  },
+  plugins: [],
+};
 ```

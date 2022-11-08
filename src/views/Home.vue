@@ -6,21 +6,21 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+  // @ is an alias to /src
+  import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: "Home",
-  components: {
-    HelloWorld,
-  },
-};
+  export default {
+    name: 'Home',
+    components: {
+      HelloWorld
+    }
+  }
 </script>
 
 <style lang="less" scoped>
-.home {
-  .home-img {
-    width: 300px;
+  .home {
+    .home-img {
+      width: 300px;
+    }
   }
-}
 </style>

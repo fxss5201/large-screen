@@ -6,6 +6,8 @@
       <router-link to="/about">About</router-link>
       |
       <router-link to="/tailwindcss">tailwindcss</router-link>
+      |
+      <router-link to="/echartsExample">echartsExample</router-link>
     </div>
     <router-view />
   </div>

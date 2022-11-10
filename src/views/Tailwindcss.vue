@@ -13,20 +13,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { ref } from 'vue'
   import { useFullscreen } from '@vueuse/core'
 
-  export default {
-    name: 'Tailwindcss',
-    setup() {
-      const box = ref()
-      const { isFullscreen, toggle } = useFullscreen(box)
-      return {
-        box,
-        isFullscreen,
-        toggle
-      }
-    }
-  }
+  const box = ref()
+  const { isFullscreen, toggle } = useFullscreen(box)
 </script>

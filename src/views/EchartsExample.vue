@@ -224,17 +224,17 @@
   })
   const seriesData5 = ref([
     {
-      type: 'bar',
+      type: 'line',
       name: '2015',
       data: [89.3, 92.1, 94.4, 85.4, 88, 90]
     },
     {
-      type: 'bar',
+      type: 'line',
       name: '2016',
       data: [95.8, 89.4, 91.2, 76.9, 75, 68]
     },
     {
-      type: 'bar',
+      type: 'line',
       name: '2017',
       data: [97.7, 83.1, 92.5, 78.1, 95, 93]
     }

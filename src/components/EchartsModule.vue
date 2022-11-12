@@ -5,7 +5,7 @@
 <script setup>
   import { defineProps, defineExpose, watch, nextTick, ref, onMounted, onBeforeUnmount } from 'vue'
   import * as echarts from 'echarts'
-  import { useEventListener } from '@vueuse/core'
+  import { useElementSize } from '@vueuse/core'
 
   const props = defineProps({
     // https://echarts.apache.org/zh/api.html#echarts.init
@@ -65,22 +65,33 @@
     update()
 
     if (props.isAddOn) {
-      // 鼠标移上查看的时候，暂停动画
-      myChart.on('mouseover', 'series', event => {
-        // 取消之前高亮的图形
-        myChart.dispatchAction({
-          type: 'downplay',
-          seriesIndex: currentSeriesIndex,
-          dataIndex: currentDataIndex
-        })
-        echartsPause()
-      })
-      // 鼠标移出的时候打开动画
-      myChart.on('mouseout', 'series', event => {
-        // 自动播放 或者 调用过 echartsPlay
-        if (props.autoPlay || isEchartsPlay) echartsPlay(true, event.seriesIndex, event.dataIndex - 1)
-      })
+      addEventFn()
     }
+  }
+
+  // 绑定事件
+  function addEventFn() {
+    // 鼠标移上查看的时候，暂停动画
+    myChart.on('mouseover', 'series', event => {
+      // 取消之前高亮的图形
+      myChart.dispatchAction({
+        type: 'downplay',
+        seriesIndex: currentSeriesIndex,
+        dataIndex: currentDataIndex
+      })
+      echartsPause()
+    })
+    // 鼠标移出的时候打开动画
+    myChart.on('mouseout', 'series', event => {
+      // 自动播放 或者 调用过 echartsPlay
+      if (props.autoPlay || isEchartsPlay) echartsPlay(true, event.seriesIndex, event.dataIndex - 1)
+    })
+  }
+
+  // 移除事件
+  function removeEventFn() {
+    myChart.off('mouseover')
+    myChart.off('mouseout')
   }
 
   // 数据更新
@@ -109,8 +120,7 @@
   function destroyEchart() {
     if (myChart) {
       if (props.isAddOn) {
-        myChart.off('mouseover')
-        myChart.off('mouseout')
+        removeEventFn()
       }
       if (typeof myChart.clear === 'function') myChart.clear()
       if (typeof myChart.dispose === 'function') myChart.dispose()
@@ -214,14 +224,51 @@
     { deep: true }
   )
 
-  // 浏览器大小改变的时候，自动 resieze
-  useEventListener(window, 'resize', () => {
-    echartsResize()
-  })
+  // 监听 props.autoPlay ，自动关闭、继续动画
+  watch(
+    () => props.autoPlay,
+    val => {
+      if (val) {
+        echartsPlay(false, currentSeriesIndex, currentDataIndex)
+      } else {
+        echartsPause()
+      }
+    }
+  )
+
+  // 监听 props.isAddOn ，自动添加、移除事件
+  watch(
+    () => props.isAddOn,
+    val => {
+      if (val) {
+        addEventFn()
+      } else {
+        removeEventFn()
+      }
+    }
+  )
+
+  // 父元素大小改变的时候，自动 resieze
+  const { width, height } = useElementSize(echartsRef)
+  watch(
+    () => width.value,
+    val => {
+      nextTick(() => {
+        echartsResize()
+      })
+    }
+  )
+  watch(
+    () => height.value,
+    val => {
+      nextTick(() => {
+        echartsResize()
+      })
+    }
+  )
 
   defineExpose({
     echartsPlay,
-    echartsPause,
-    echartsResize
+    echartsPause
   })
 </script>

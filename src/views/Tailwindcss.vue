@@ -10,6 +10,13 @@
         <p class="text-gray-500">You have a new message!</p>
       </div>
     </div>
+    <div class="mt-4">
+      <div class="text-center">测试浮动</div>
+      <div class="clearfix border m-2">
+        <div class="float-left h-20">左</div>
+        <div class="float-right">右</div>
+      </div>
+    </div>
   </div>
 </template>
 

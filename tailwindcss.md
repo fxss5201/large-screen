@@ -17,18 +17,23 @@
 |前缀|含义|
 |----|----|
 |`box-`|设置`box-sizing`|
-|`float-`|设置浮动|
-|`clear-`|清楚浮动|
-|`object-`|用于控制可替换元素的内容如何调整大小及在其容器中的位置|
+|`float-`|设置浮动`float`|
+|`clear-`|清楚浮动`clear`|
+|`object-`|用于控制可替换元素的内容如何调整大小及在其容器中的位置`object-fit`/`object-position`|
 |`overflow-`|如何处理超出容器的内容`overflow`|
 |`overscroll-`|用于控制浏览器到达滚动区域边界时的行为`overscroll-behavior`|
 |`z-`|用于设置`z-index`|
-|`flex`/`flex-`|flex布局|
+|`flex`/`flex-`|flex布局`flex`/`flex-direction`/`flex-wrap`/`flex-grow`/`flex-shrink`|
+|`order`|flex和grid的排序`order`|
 |`justify-`|用于设置`justify-content`/`justify-items`/`justify-self`|
 |`content-`|用于设置`align-content`|
 |`items-`|用于设置`align-items`|
 |`self-`|用于设置`align-self`|
-|`grid-`|grid布局|
+|`grid-`|grid布局`grid-template-columns`/`grid-column`/`grid-template-rows`/`grid-auto-flow`|
+|`row-`|元素的大小和放置方式`grid-row`|
+|`auto-`|控制隐式创建的网格行/列的大小`grid-auto-rows`/`grid-auto-columns`|
+|`gap-`|grid和flexbox items间隔`gap`/`row-gap`/`column-gap`|
+|`place-`|用于同时控制内容如何在水平和垂直方向上对齐`place-content`/`place-items`/`place-self`|
 |`p-`|内边距`padding`|
 |`m-`|外边距`margin`|
 |`w-`|元素宽度`width`|
@@ -37,38 +42,52 @@
 |`h-`|元素高度`height`|
 |`min-h-`|最小高度`min-height`|
 |`max-h-`|最小高度`max-height`|
-|`text-`|字体大小、行高、对齐、颜色、透明度|
+|`font-`|字体序列`font-family`/字体粗细`font-weight`|
+|`text-`|字体大小、行高、对齐、颜色、透明度`font-size`/`line-height`/`text-align`/`color`|
+|`leading-`|行高`line-height`|
+|`tracking-`|字母间距`letter-spacing`|
 |`align-`|设置`vertical-align`|
 |`whitespace-`|设置`white-space`|
-|`break-`|文本换行|
+|`break-`|文本换行`overflow-wrap`/`word-break`|
 |`placeholder-`|占位文本颜色及透明度|
-|`list-`|列表项标记类型`list-style`|
-|`bg-`|背景相关|
+|`list-`|列表项标记类型`list-style-type`/`list-style-position`|
+|`bg-`|背景相关`background-attachment`/`background-clip`/`background-color`/`background-origin`/`background-position`/`background-repeat`/`background-size`/`background-image`|
 |`rounded-`|设置`border-radius`|
-|`border-`|设置边框颜色、厚度、透明度、样式、表格边框|
+|`border-`|设置边框颜色、厚度、透明度、样式、表格边框`border-width`/`border-color`/`border-style`/`border-collapse`|
 |`divide-`|设置分割线颜色、厚度、透明度、样式|
-|`ring-`|设置分割线颜色、厚度、透明度、偏移厚度、偏移颜色|
-|`table-`|表格布局|
-|`transition-`|过渡属性|
-|`duration-`|过渡持续时间|
-|`ease-`|过渡计时函数|
-|`delay-`|过渡延迟|
-|`animate-`|动画|
-|`transform-`|变换|
-|`origin-`|变换原点|
+|`ring-`|设置分割线颜色、厚度、透明度、偏移厚度、偏移颜色`box-shadow`|
+|`shadow-`|盒阴影|
+|`opacity-`|不透明度`opacity`|
+|`table-`|表格布局`table-layout`|
+|`transition-`|过渡属性`transition-property`/`transition-timing-function`/`transition-duration`|
+|`duration-`|过渡持续时间`transition-duration`|
+|`ease-`|过渡计时函数`transition-timing-function`|
+|`delay-`|过渡延迟`transition-delay`|
+|`animate-`|动画`animation`|
+|`transform-`|变换`transform`|
+|`origin-`|变换原点`transform-origin`|
 |`scale-`|缩放|
 |`rotate-`|旋转|
 |`translate-`|平移|
 |`skew-`|倾斜|
 |`pointer-`|指向事件`pointer-events`|
-|`resize`/`resize-`|大小调整|
+|`resize`/`resize-`|大小调整`resize`|
 |`select-`|用户选择`user-select`|
+|`cursor-`|光标效果`cursor`|
+|`outline-`|轮廓`outline`/`outline-offset`|
 
 ## 特殊的，无共同前缀
 
 ### [Top / Right / Bottom / Left](https://www.tailwindcss.cn/docs/top-right-bottom-left)
 
 使用 `{top|right|bottom|left|inset}-0` 功能类，将绝对定位的元素锚定在最近定位的父元素的任何边缘上。
+
+## 可见性
+
+|Class|Properties|
+|----|----|
+|`visible`|`visibility: visible;`|
+|`invisible`|`visibility: hidden;`|
 
 ### 定位
 
@@ -130,6 +149,13 @@
 |`truncate`|`overflow: hidden;text-overflow: ellipsis;white-space: nowrap;`|
 |`overflow-ellipsis`|`text-overflow: ellipsis;`|
 |`overflow-clip`|`text-overflow: clip;`|
+
+### 字体样式
+
+|Class|Properties|
+|----|----|
+|`italic`|`font-style: italic;`|
+|`not-italic`|`font-style: normal;`|
 
 ## [悬停、焦点和其它状态](https://www.tailwindcss.cn/docs/hover-focus-and-other-states)
 

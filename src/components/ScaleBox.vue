@@ -36,11 +36,10 @@
   // 防抖设置
   const debouncedFn = useDebounceFn(
     () => {
-      console.log(123)
       refresh()
     },
-    500,
-    { maxWait: 1000 }
+    100,
+    { maxWait: 500 }
   )
 
   useEventListener(window, 'resize', () => {

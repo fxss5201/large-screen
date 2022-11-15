@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="overflow-y-auto bg-white text-black box-border" style="max-height: calc(100% - 80px)">
     <div class="flex items-start justify-between m-2">
       <div class="w-1/2 overflow-x-hidden border rounded-2">
         <h1 class="text-md my-2">1、默认展示，测试 seriesData 变更</h1>
-        <button @click="changeDate1" class="border rounded-4 py-1 px-4">切换</button>
+        <button @click="changeDate1" class="border rounded-4 py-1 px-4 hover:border-blue-700">切换</button>
         <div class="h-80">
           <echarts-module :options="options1" :seriesData="seriesData1"></echarts-module>
         </div>
       </div>
       <div class="w-1/2 overflow-x-hidden border rounded-2 ml-2">
         <h1 class="text-md my-2">2、默认不展示，展示的时候，设置 seriesData</h1>
-        <button @click="changeDate2" class="border rounded-4 py-1 px-4">切换</button>
+        <button @click="changeDate2" class="border rounded-4 py-1 px-4 hover:border-blue-700">切换</button>
         <div class="h-80">
           <echarts-module v-if="isShow" :options="options2" :seriesData="seriesData2"></echarts-module>
         </div>
@@ -19,15 +19,15 @@
     <div class="flex items-start justify-between m-2">
       <div class="w-1/2 overflow-x-hidden border rounded-2">
         <h1 class="text-md my-2">3、前后两次赋值的 seriesData[0].data.length 不一样，动画从头开始</h1>
-        <button @click="changeDate3" class="border rounded-4 py-1 px-4">切换</button>
+        <button @click="changeDate3" class="border rounded-4 py-1 px-4 hover:border-blue-700">切换</button>
         <div class="h-80">
           <echarts-module :options="options3" :seriesData="seriesData3"></echarts-module>
         </div>
       </div>
       <div class="w-1/2 overflow-x-hidden border rounded-2 ml-2">
         <h1 class="text-md my-2">4、切换宽高，自动 resize</h1>
-        <button @click="changeDate4" class="border rounded-4 py-1 px-4">切换宽度</button>
-        <button @click="changeDate41" class="border rounded-4 py-1 px-4 ml-3">切换高度</button>
+        <button @click="changeDate4" class="border rounded-4 py-1 px-4 hover:border-blue-700">切换宽度</button>
+        <button @click="changeDate41" class="border rounded-4 py-1 px-4 ml-3 hover:border-blue-700">切换高度</button>
         <div class="h-80">
           <div :style="{ width: boxWidth4 ? '100%' : '50%', height: boxHeight4 ? '100%' : '75%' }">
             <echarts-module :options="options4" :seriesData="seriesData4"></echarts-module>
@@ -38,15 +38,15 @@
     <div class="flex items-start justify-between m-2">
       <div class="w-1/2 overflow-x-hidden border rounded-2">
         <h1 class="text-md my-2">5、通过 ref 调用开始结束动画，使用 ref 调用的好处是可以指定在第几项开始动画</h1>
-        <button @click="changeDate5" class="border rounded-4 py-1 px-4">开始动画</button>
-        <button @click="changeDate51" class="border rounded-4 py-1 px-4 ml-3">关闭动画</button>
+        <button @click="changeDate5" class="border rounded-4 py-1 px-4 hover:border-blue-700">开始动画</button>
+        <button @click="changeDate51" class="border rounded-4 py-1 px-4 ml-3 hover:border-blue-700">关闭动画</button>
         <div class="h-80">
           <echarts-module ref="echartsModule5" :options="options5" :seriesData="seriesData5" :autoPlay="false"></echarts-module>
         </div>
       </div>
       <div class="w-1/2 overflow-x-hidden border rounded-2 ml-2">
         <h1 class="text-md my-2">6、改变 autoPlay 开始结束动画，使用 autoPlay 改变的好处是可以从上次暂停动画项处继续动画</h1>
-        <button @click="changeDate6" class="border rounded-4 py-1 px-4">{{ autoPlay6 ? '结束' : '开始' }}动画</button>
+        <button @click="changeDate6" class="border rounded-4 py-1 px-4 hover:border-blue-700">{{ autoPlay6 ? '结束' : '开始' }}动画</button>
         <div class="h-80">
           <echarts-module ref="echartsModule6" :options="options6" :seriesData="seriesData6" :autoPlay="autoPlay6"></echarts-module>
         </div>
@@ -55,14 +55,14 @@
     <div class="flex items-start justify-between m-2">
       <div class="w-1/2 overflow-x-hidden border rounded-2">
         <h1 class="text-md my-2">7、切换动画跳动时间 5s -> 1s</h1>
-        <button @click="changeDate7" class="border rounded-4 py-1 px-4">切换</button>
+        <button @click="changeDate7" class="border rounded-4 py-1 px-4 hover:border-blue-700">切换</button>
         <div class="h-80">
           <echarts-module :options="options7" :seriesData="seriesData7" :intervalTime="timeout"></echarts-module>
         </div>
       </div>
       <div class="w-1/2 overflow-x-hidden border rounded-2 ml-2">
         <h1 class="text-md my-2">8、通过 isAddOn 添加移除鼠标事件</h1>
-        <button @click="changeDate8" class="border rounded-4 py-1 px-4">{{ isAddOn8 ? '移除' : '添加' }}</button>
+        <button @click="changeDate8" class="border rounded-4 py-1 px-4 hover:border-blue-700">{{ isAddOn8 ? '移除' : '添加' }}</button>
         <div class="h-80">
           <echarts-module :options="options8" :seriesData="seriesData8" :isAddOn="isAddOn8"></echarts-module>
         </div>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -8,15 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue')
   },
   {
     path: '/tailwindcss',
@@ -27,6 +18,16 @@ const routes = [
     path: '/echartsExample',
     name: 'EchartsExample',
     component: () => import(/* webpackChunkName: "echartsExample" */ '../views/EchartsExample.vue')
+  },
+  {
+    path: '/optionApi',
+    name: 'OptionApi',
+    component: () => import(/* webpackChunkName: "OptionApi" */ '../views/OptionApi.vue')
+  },
+  {
+    path: '/compositionApi',
+    name: 'CompositionApi',
+    component: () => import(/* webpackChunkName: "CompositionApi" */ '../views/CompositionApi.vue')
   }
 ]
 

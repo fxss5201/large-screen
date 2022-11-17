@@ -1,5 +1,10 @@
 <template>
-  <div class="bg-white mx-auto" ref="box">
+  <div class="bg-white mx-auto">
+    <div class="mt-4">
+      <div class="text-center">测试 ref</div>
+      <div>num: {{ num }}</div>
+      <button @click="changeNum" class="border rounded-4 py-1 px-4 hover:border-blue-700">+2</button>
+    </div>
     <div class="mt-4">
       <div class="text-center">测试 组合式 vue-router</div>
       <div>routePath: {{ route.path }}</div>
@@ -16,6 +21,11 @@
 <script setup>
   import { ref, computed } from 'vue'
   import { useStore, useRouter, useRoute } from './../utils/vueApi'
+
+  const num = ref(1)
+  function changeNum() {
+    num.value += 2
+  }
 
   const router = useRouter()
   const route = useRoute()

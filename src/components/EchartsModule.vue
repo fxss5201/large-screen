@@ -268,6 +268,7 @@
   )
 
   defineExpose({
+    echartsInstance: () => myChart,
     echartsPlay,
     echartsPause
   })
